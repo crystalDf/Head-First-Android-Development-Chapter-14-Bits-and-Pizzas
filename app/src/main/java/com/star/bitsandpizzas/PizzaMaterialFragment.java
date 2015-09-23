@@ -1,6 +1,7 @@
 package com.star.bitsandpizzas;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 public class PizzaMaterialFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         RecyclerView recyclerView = (RecyclerView) inflater
@@ -37,6 +38,15 @@ public class PizzaMaterialFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        captionedImagesAdapter.setListener(new CaptionedImagesAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(getActivity(), PizzaDetailActivity.class);
+                intent.putExtra(PizzaDetailActivity.EXTRA_PIZZANO, position);
+                startActivity(intent);
+            }
+        });
 
         return recyclerView;
     }

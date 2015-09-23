@@ -33,4 +33,6 @@
         <item>Pasta</item>
         <item>Stores</item>
     </string-array>
+    <string name="title_activity_pizza_detail">PizzaDetailActivity</string>
+    <string name="welcome_text">We offer a range of freshly baked pizza and pasta dishes. Why not try some?</string>
 </resources>

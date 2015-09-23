@@ -1,12 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.star.bitsandpizzas.TopFragment">
+             tools:context="com.star.bitsandpizzas.TopFragment"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_top"/>
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_text"/>
 
-</FrameLayout>
+    <RecyclerView
+        android:id="@+id/pizza_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

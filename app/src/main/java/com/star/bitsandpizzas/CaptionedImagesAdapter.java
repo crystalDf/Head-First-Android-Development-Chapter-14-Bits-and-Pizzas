@@ -4,6 +4,7 @@ package com.star.bitsandpizzas;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,9 +15,19 @@ public class CaptionedImagesAdapter extends
     private String[] mCaptions;
     private int[] mImageIds;
 
+    private Listener mListener;
+
     public CaptionedImagesAdapter(String[] captions, int[] imageIds) {
         mCaptions = captions;
         mImageIds = imageIds;
+    }
+
+    public interface Listener {
+        void onClick(int position);
+    }
+
+    public void setListener(Listener listener) {
+        mListener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +49,7 @@ public class CaptionedImagesAdapter extends
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         CardView cardView = holder.mCardView;
 
         TextView textView = (TextView) cardView.findViewById(R.id.info_text);
@@ -47,6 +58,15 @@ public class CaptionedImagesAdapter extends
         ImageView imageView = (ImageView) cardView.findViewById(R.id.info_image);
         imageView.setImageDrawable(cardView.getResources().getDrawable(mImageIds[position]));
         imageView.setContentDescription(mCaptions[position]);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onClick(position);
+                }
+            }
+        });
     }
 
     @Override

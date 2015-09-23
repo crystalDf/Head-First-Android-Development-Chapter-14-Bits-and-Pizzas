@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
                     mCurrentPosition = 0;
                 } else if (fragment instanceof PizzaMaterialFragment) {
                     mCurrentPosition = 1;
-                } else if (fragment instanceof PastaFragment) {
+                } else if (fragment instanceof PastaMaterialFragment) {
                     mCurrentPosition = 2;
                 } else if (fragment instanceof StoresFragment) {
                     mCurrentPosition = 3;
@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
                 break;
 
             case 2:
-                fragment = new PastaFragment();
+                fragment = new PastaMaterialFragment();
                 break;
 
             case 3:
